@@ -1,0 +1,101 @@
+{% extends "::base.html.twig"%}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/bundles/app/css/index.css') }}"/>
+{% endblock %}
+
+{% block title %}
+         Gradaran
+{% endblock %}
+{% block body %}
+    <div class="main">
+        <div class="content">
+            <div class="div-image-header">
+                <img src="{{ asset('/imageStyle/book.jpg') }}" class="img-header" alt="image"/>
+            </div>
+            <p class="p1-header">Մարդը ստեղծված է այն գրքերից, որոնք կարդացել է։</p>
+            <p class="p2-header">Ռալֆ Էմերսոն</p>
+            {# menu #}
+            <ul class="ul-fakultet">
+                <li>Բնագիտական
+                    <ul>
+                        <li>Ընդհանուր և կիրառական ֆիզիկայի ամբիոն</li>
+                        <li>Աշխարհագրության ամբիոն</li>
+                        <li>Քիմիայի ամբիոն</li>
+                        <li>Կենսաբանության ամբիոն</li>
+                        <li>Կապի միջոցների միկրոէլեկտրոնային սխեմաների և միջոցների ամբիոն</li>
+                    </ul>
+                </li>
+                <li>Բանասիրական
+                    <ul>
+                        <li>Անգլերեն լեզվի ամբիոն</li>
+                        <li>Ռուսաց լեզվի և գրականության ամբիոն</li>
+                        <li>Ռուսաց լեզվի և գրականության ամբիոն</li>
+                        <li>Ակ.Ս.Աբրահամյանի անվան հայոց լեզվի ամբիոն</li>
+                        <li> Գրականության և լրագրության ամբիոն </li>
+                    </ul>
+                </li>
+                <li>Մանկավարժության և սպորտի
+                    <ul>
+                        <li>Մանկավարժության և հոգեբանության ամբիոն</li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </li>
+                <li>Պատմության և իրավագիտության</li>
+                <li>Տնտեսագիտության</li>
+            </ul>
+            <ul class="menu-content">
+                {% for category in categories %}
+                    <a href="{{ path('index', {'slug':category.id}) }}" class="a-menu">{{ category.name }}</a>
+                {% endfor %}
+            </ul>
+
+            {# books #}
+            <div class="div-book">
+                {% for book in books %}
+                    <div class="div-one-book">
+                        <div class="div-image-book">
+                            <img src="{{ asset('uploads/images/') }}{{ book.srcImage }}"  class="img-book" alt="bookImage"/>
+                        </div>
+                        <div class="div-text">
+                            <p class="p-title">{{ book.title }}</p>
+                            <p class="p-author">
+                                <span class="span-author"> Հեղինակ`</span>
+                                {{ book.author }}
+                            </p>
+                            <p class="p-edition-place">
+                                <span class="span-edition-place">Լույս է տեսել`</span>
+                                {{ book.edition }} թ-ին, {{ book.place }}
+                            </p>
+                            <p class="p-description">{{ book.description }}</p>
+                            <p class="p-quotation"><<{{ book.quotation }}>></p>
+                        </div>
+
+
+                        <a href="{{ path('show', {'slugBook': book.id})}}" target="_blank" class="a-read">
+                            <p class="p-read">Կարդալ</p>
+                        </a>
+                    </div>
+                {% endfor %}
+
+            </div>
+            {{ knp_pagination_render(books) }}
+            <div class="div-animation">
+                <img src="{{ asset('book-animation.gif') }}"  class="img-animation"/>
+            </div>
+            {# quotation #}
+            <div class="facts">
+                <span class="span-fact">Հետաքրքիր փաստեր</span>
+                {% for f in facts %}
+                    <p class="p-fact">{{ f.fact}} </p>
+                {% endfor %}
+            </div>
+
+
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    admin.book:
+        class: AdminBundle\Entity\BookAdmin
+        arguments: [~, AdminBundle\Entity\Book, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Content', label: Book }
+
+    admin.category:
+        class: AdminBundle\Entity\CategoryAdmin
+        arguments: [~, AdminBundle\Entity\Category, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Content', label: Category }
+
+    admin.fact:
+        class: AdminBundle\Entity\FactAdmin
+        arguments: [~, AdminBundle\Entity\Fact, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Content', label: Fact }
+
+    admin.fakultet:
+        class: AdminBundle\Entity\FakultetAdmin
+        arguments: [~, AdminBundle\Entity\Fakultet, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Content', label: Fakultet }
+
+    admin.ambion:
+            class: AdminBundle\Entity\AmbionAdmin
+            arguments: [~, AdminBundle\Entity\Ambion, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: 'Content', label: Ambion }
+
+    admin.masnagitutyun:
+            class: AdminBundle\Entity\MasnagitutyunAdmin
+            arguments: [~, AdminBundle\Entity\Masnagitutyun, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: 'Content', label: Masnagitutyun }
