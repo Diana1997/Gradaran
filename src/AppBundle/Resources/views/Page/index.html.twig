@@ -1,7 +1,7 @@
 {% extends "::base.html.twig"%}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('/bundles/app/css/index.css') }}"/>
+   <link rel="stylesheet" href="{{ asset('/bundles/app/css/index.css') }}"/>
 {% endblock %}
 
 {% block title %}
@@ -32,11 +32,11 @@
 
             <ul>
                 {% for mas in masnagitutyunner %}
-                    <a href="">{{ mas.name }}</a><br>
+                    <a href="{{ path('index', {'slug': mas.name})}}">{{ mas.name }}</a><br>
                 {% endfor %}
             </ul>
 
-            {{ slug }}
+         {#  {{ slug }}#}
 
 
             {# books #}
@@ -47,17 +47,16 @@
                             <img src="{{ asset('uploads/images/') }}{{ book.srcImage }}"  class="img-book" alt="bookImage"/>
                         </div>
                         <div class="div-text">
-                            <p class="p-title">{{ book.title }}</p>
+                            <p class="p-title">{{ book.bookTitle }}</p>
                             <p class="p-author">
                                 <span class="span-author"> Հեղինակ`</span>
                                 {{ book.author }}
                             </p>
-                            <p class="p-edition-place">
-                                <span class="span-edition-place">Լույս է տեսել`</span>
-                                {{ book.edition }} թ-ին, {{ book.place }}
+                            <p class="p-ararka">
+                                <span class="span-ararka">Առարկա՝ </span>
+                                {{ book.ararka }}
                             </p>
-                            <p class="p-description">{{ book.description }}</p>
-                            <p class="p-quotation"><<{{ book.quotation }}>></p>
+                            <p class="p-quotation">{{ book.kisamyak }}</p>
                         </div>
 
 
@@ -66,7 +65,6 @@
                         </a>
                     </div>
                 {% endfor %}
-
             </div>
             {{ knp_pagination_render(books) }}
             <div class="div-animation">

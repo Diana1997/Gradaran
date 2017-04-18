@@ -10,11 +10,6 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: 'Content', label: Book }
 
-    admin.category:
-        class: AdminBundle\Entity\CategoryAdmin
-        arguments: [~, AdminBundle\Entity\Category, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Content', label: Category }
 
     admin.fact:
         class: AdminBundle\Entity\FactAdmin

@@ -27,7 +27,8 @@ class DefaultController extends Controller
         $masnagitutyun = $em->getRepository("AdminBundle:Masnagitutyun")->findMasnagitutyunByAmbionId($mId);
 
 
-        $books = $em->getRepository("AdminBundle:Book")->findBookByCategoryId($slug);
+        $bId = $em->getRepository("AdminBundle:Masnagitutyun")->getIdByMasnagitutyunName($slug);
+        $books = $em->getRepository("AdminBundle:Book")->findBookByMasnagitutyunId($bId);
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate($books, $this->get('request')->query->get('page', 1), 2);
 
@@ -37,7 +38,7 @@ class DefaultController extends Controller
             "fakultets" => $fakultets,
             "ambionner" => $ambionner,
             "masnagitutyunner" => $masnagitutyun,
-            "slug" => $slug,
+           // "slug" => $slug,
             "books" => $pagination,
             "facts" => $facts,
         ));

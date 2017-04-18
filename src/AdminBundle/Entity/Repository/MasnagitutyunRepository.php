@@ -15,4 +15,13 @@ class MasnagitutyunRepository extends EntityRepository
             ->getArrayResult();
     }
 
+    public function getIdByMasnagitutyunName($name)
+    {
+        return $this->getEntityManager()
+            ->createQuery("Select m.id
+                            From AdminBundle:Masnagitutyun m
+                            where m.name = :name")
+            ->setParameter('name', $name)
+            ->getResult();
+    }
 }

@@ -26,7 +26,7 @@ class Book
     /**
      * @ORM\Column(type="string")
      */
-    protected $title;
+    protected $bookTitle;
 
     /**
      * @ORM\Column(type="string")
@@ -34,33 +34,31 @@ class Book
     protected $author;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
-    protected $edition;
+    protected $ararka;
 
     /**
      * @ORM\Column(type="string")
      */
-    protected $place;
+    protected $kisamyak;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\ManyToOne(targetEntity="Masnagitutyun", inversedBy="masnagitutyun")
+     * @ORM\JoinColumn(name="masnagitutyun_id", referencedColumnName="id")
      */
-    protected $description;
+    protected $masnagitutyun;
 
-    /**
-     * @ORM\Column(type="text",  nullable=true)
-     */
-    protected $quotation;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="book")
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     */
-    protected $category;
 
     use File;
     use Image;
+
+
+
+
+
+
 
     /**
      * Get id
@@ -73,32 +71,34 @@ class Book
     }
 
     /**
-     * Set title
+     * Set bookTitle
      *
-     * @param string $title
+     * @param string $bookTitle
+     *
      * @return Book
      */
-    public function setTitle($title)
+    public function setBookTitle($bookTitle)
     {
-        $this->title = $title;
+        $this->bookTitle = $bookTitle;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get bookTitle
      *
      * @return string
      */
-    public function getTitle()
+    public function getBookTitle()
     {
-        return $this->title;
+        return $this->bookTitle;
     }
 
     /**
      * Set author
      *
      * @param string $author
+     *
      * @return Book
      */
     public function setAuthor($author)
@@ -119,105 +119,74 @@ class Book
     }
 
     /**
-     * Set edition
+     * Set ararka
      *
-     * @param integer $edition
+     * @param string $ararka
+     *
      * @return Book
      */
-    public function setEdition($edition)
+    public function setArarka($ararka)
     {
-        $this->edition = $edition;
+        $this->ararka = $ararka;
 
         return $this;
     }
 
     /**
-     * Get edition
-     *
-     * @return integer
-     */
-    public function getEdition()
-    {
-        return $this->edition;
-    }
-
-    /**
-     * Set place
-     *
-     * @param string $place
-     * @return Book
-     */
-    public function setPlace($place)
-    {
-        $this->place = $place;
-
-        return $this;
-    }
-
-    /**
-     * Get place
+     * Get ararka
      *
      * @return string
      */
-    public function getPlace()
+    public function getArarka()
     {
-        return $this->place;
+        return $this->ararka;
     }
 
     /**
-     * Set category
+     * Set kisamyak
      *
-     * @param \AdminBundle\Entity\Category $category
+     * @param string $kisamyak
+     *
      * @return Book
      */
-    public function setCategory(\AdminBundle\Entity\Category $category = null)
+    public function setKisamyak($kisamyak)
     {
-        $this->category = $category;
+        $this->kisamyak = $kisamyak;
 
         return $this;
     }
 
     /**
-     * Get category
+     * Get kisamyak
      *
-     * @return \AdminBundle\Entity\Category
+     * @return string
      */
-    public function getCategory()
+    public function getKisamyak()
     {
-        return $this->category;
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
-        return $this->description;
+        return $this->kisamyak;
     }
 
     /**
-     * @param mixed $description
+     * Set masnagitutyun
+     *
+     * @param \AdminBundle\Entity\Masnagitutyun $masnagitutyun
+     *
+     * @return Book
      */
-    public function setDescription($description)
+    public function setMasnagitutyun(\AdminBundle\Entity\Masnagitutyun $masnagitutyun = null)
     {
-        $this->description = $description;
+        $this->masnagitutyun = $masnagitutyun;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get masnagitutyun
+     *
+     * @return \AdminBundle\Entity\Masnagitutyun
      */
-    public function getQuotation()
+    public function getMasnagitutyun()
     {
-        return $this->quotation;
+        return $this->masnagitutyun;
     }
-
-    /**
-     * @param mixed $quotation
-     */
-    public function setQuotation($quotation)
-    {
-        $this->quotation = $quotation;
-    }
-
 }

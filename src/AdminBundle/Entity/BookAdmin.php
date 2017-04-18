@@ -15,14 +15,10 @@ class BookAdmin extends Admin
     {
         $formMapper
             ->with('Content')
-            ->add('title', 'text')
-        ->add('author', 'text')
-        ->add('edition', 'number')
-        ->add('place', 'text')
-            ->add('description', 'text')
-            ->add('quotation', 'text', array(
-                'required' => false,
-            ))
+            ->add('bookTitle', 'text')
+            ->add('author', 'text')
+            ->add('ararka', 'text')
+            ->add('kisamyak', 'text')
             ->add('file', 'file',array(
                 'required' => false,
                 //'data_class' => null,
@@ -33,8 +29,8 @@ class BookAdmin extends Admin
             ->end()
 
        ->with('Meta data')
-       ->add('category', 'sonata_type_model', array(
-           'class' => 'AdminBundle\Entity\Category',
+       ->add('masnagitutyun', 'sonata_type_model', array(
+           'class' => 'AdminBundle\Entity\Masnagitutyun',
            'property' => 'name',
        ))
             ->end();
@@ -42,21 +38,21 @@ class BookAdmin extends Admin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('title')
+        $datagridMapper
+            ->add('bookTitle')
             ->add('author')
-            ->add('edition')
-            ->add('place');
+            ->add('ararka')
+            ->add('kisamyak');
 
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
 
-        $listMapper->addIdentifier('title')
+        $listMapper->addIdentifier('bookTitle')
+            ->add('ararka')
+            ->add('kisamyak')
             ->add('author')
-            ->add('edition')
-            ->add('place')
-            ->add('description')
           //  ->add('quotation')
             ->add('_action', 'actions', array(
                 'actions' => array(

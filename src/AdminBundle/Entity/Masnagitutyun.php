@@ -27,6 +27,10 @@ class Masnagitutyun{
     protected $ambion;
 
 
+    /**
+     *@ORM\OneToMany(targetEntity="Book", mappedBy="ambion")
+     */
+    protected $book;
 
     /**
      * Get id
@@ -84,5 +88,46 @@ class Masnagitutyun{
     public function getAmbion()
     {
         return $this->ambion;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->book = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add book
+     *
+     * @param \AdminBundle\Entity\Book $book
+     *
+     * @return Masnagitutyun
+     */
+    public function addBook(\AdminBundle\Entity\Book $book)
+    {
+        $this->book[] = $book;
+
+        return $this;
+    }
+
+    /**
+     * Remove book
+     *
+     * @param \AdminBundle\Entity\Book $book
+     */
+    public function removeBook(\AdminBundle\Entity\Book $book)
+    {
+        $this->book->removeElement($book);
+    }
+
+    /**
+     * Get book
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBook()
+    {
+        return $this->book;
     }
 }

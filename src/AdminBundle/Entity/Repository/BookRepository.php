@@ -5,18 +5,18 @@ use Doctrine\ORM\EntityRepository;
 
 class BookRepository extends EntityRepository
 {
-    public function findBookByCategoryId($id)
+    public function findBookByMasnagitutyunId($id)
     {
         return $this->getEntityManager()
-                ->createQuery("SELECT b.id, b.title, b.author, b.edition, b.place, b.description,
-          b.quotation, b.srcImage
+                ->createQuery("SELECT b.id, b.bookTitle, b.author, b.ararka, b.kisamyak, b.srcImage
                                 FROM AdminBundle:Book b
-                                WHERE b.category = :id")
+                                WHERE b.masnagitutyun = :id")
                 ->setParameter('id', $id)
                 ->getArrayResult();
+
     }
 
-    public function findPathByBookId($id)
+   public function findPathByBookId($id)
     {
         return $this->getEntityManager()
             ->createQuery("SELECT bk.path
