@@ -15,4 +15,14 @@ class AmbionRepository extends EntityRepository
             ->getArrayResult();
     }
 
+    public function getIdByAmbionName($name)
+    {
+        return $this->getEntityManager()
+            ->createQuery("Select a.id
+                            From AdminBundle:Ambion a
+                            where a.name = :name")
+            ->setParameter('name', $name)
+            ->getResult();
+    }
+
 }

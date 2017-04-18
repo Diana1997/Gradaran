@@ -19,16 +19,25 @@
             {# menuFakultet #}
             <ul class="menu-content">
                 {% for fakultet in fakultets %}
-                    <a href="{{ path('index', {'slug':fakultet.id}) }}" class="a-menu">{{ fakultet.name }}</a>
+                    <a href="{{ path('index', {'slug': fakultet.id}) }}" class="a-menu">{{ fakultet.name }}</a>
                 {% endfor %}
             </ul>
 
             {# ambionner #}
             <ul>
                 {% for ambion in ambionner %}
-                    <a href="">{{ ambion.name }}</a><br>
+                    <a href="{{ path('index', {'slug': ambion.name})}}">{{ ambion.name }}</a><br>
                 {% endfor %}
             </ul>
+
+            <ul>
+                {% for mas in masnagitutyunner %}
+                    <a href="">{{ mas.name }}</a><br>
+                {% endfor %}
+            </ul>
+
+            {{ slug }}
+
 
             {# books #}
             <div class="div-book">
