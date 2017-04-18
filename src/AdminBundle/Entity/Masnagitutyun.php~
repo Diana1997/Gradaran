@@ -1,0 +1,30 @@
+<?php
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="masnagitutyun")
+ */
+class Masnagitutyun{
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $name;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Ambion", inversedBy="masnagitutyun")
+     * @ORM\JoinColumn(name="ambion_id", referencedColumnName="id")
+     */
+    protected $ambion;
+
+
+}

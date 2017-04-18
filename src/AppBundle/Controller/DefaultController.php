@@ -19,7 +19,10 @@ class DefaultController extends Controller
     public function indexAction($slug, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $categories = $em->getRepository("AdminBundle:Category")->findAll();
+        $fakultets = $em->getRepository("AdminBundle:Fakultet")->findAll();
+
+        $ambionner = $em->getRepository("AdminBundle:Ambion")->findAmbionByFakultetId($slug);
+
 
         $books = $em->getRepository("AdminBundle:Book")->findBookByCategoryId($slug);
         $paginator  = $this->get('knp_paginator');
@@ -27,7 +30,11 @@ class DefaultController extends Controller
 
         $facts = $em->getRepository("AdminBundle:Fact")->findAll();
         return $this->render("AppBundle:Page:index.html.twig", array(
-            "categories" => $categories,
+           // "categories" => $categories,
+            "fakultets" => $fakultets,
+            "ambionner" => $ambionner,
+
+
             "books" => $pagination,
             "facts" => $facts,
         ));

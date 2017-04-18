@@ -4,7 +4,7 @@ namespace AdminBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AdminBundle\Entity\Repository\AmbionRepository")
  * @ORM\Table(name="ambion")
  */
 

@@ -15,40 +15,18 @@
             </div>
             <p class="p1-header">Մարդը ստեղծված է այն գրքերից, որոնք կարդացել է։</p>
             <p class="p2-header">Ռալֆ Էմերսոն</p>
-            {# menu #}
-            <ul class="ul-fakultet">
-                <li>Բնագիտական
-                    <ul>
-                        <li>Ընդհանուր և կիրառական ֆիզիկայի ամբիոն</li>
-                        <li>Աշխարհագրության ամբիոն</li>
-                        <li>Քիմիայի ամբիոն</li>
-                        <li>Կենսաբանության ամբիոն</li>
-                        <li>Կապի միջոցների միկրոէլեկտրոնային սխեմաների և միջոցների ամբիոն</li>
-                    </ul>
-                </li>
-                <li>Բանասիրական
-                    <ul>
-                        <li>Անգլերեն լեզվի ամբիոն</li>
-                        <li>Ռուսաց լեզվի և գրականության ամբիոն</li>
-                        <li>Ռուսաց լեզվի և գրականության ամբիոն</li>
-                        <li>Ակ.Ս.Աբրահամյանի անվան հայոց լեզվի ամբիոն</li>
-                        <li> Գրականության և լրագրության ամբիոն </li>
-                    </ul>
-                </li>
-                <li>Մանկավարժության և սպորտի
-                    <ul>
-                        <li>Մանկավարժության և հոգեբանության ամբիոն</li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </li>
-                <li>Պատմության և իրավագիտության</li>
-                <li>Տնտեսագիտության</li>
-            </ul>
+
+            {# menuFakultet #}
             <ul class="menu-content">
-                {% for category in categories %}
-                    <a href="{{ path('index', {'slug':category.id}) }}" class="a-menu">{{ category.name }}</a>
+                {% for fakultet in fakultets %}
+                    <a href="{{ path('index', {'slug':fakultet.id}) }}" class="a-menu">{{ fakultet.name }}</a>
+                {% endfor %}
+            </ul>
+
+            {# ambionner #}
+            <ul>
+                {% for ambion in ambionner %}
+                    <a href="">{{ ambion.name }}</a><br>
                 {% endfor %}
             </ul>
 

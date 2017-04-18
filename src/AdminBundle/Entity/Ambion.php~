@@ -1,0 +1,37 @@
+<?php
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="ambion")
+ */
+
+class Ambion{
+
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $name;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Fakultet", inversedBy="ambion")
+     * @ORM\JoinColumn(name="fakultet_id", referencedColumnName="id")
+     */
+    protected $fakultet;
+
+    /**
+     *@ORM\OneToMany(targetEntity="Masnagitutyun", mappedBy="ambion")
+     */
+    protected $masnagitutyun;
+
+
+}
